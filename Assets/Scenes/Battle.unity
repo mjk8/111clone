@@ -285,9 +285,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1826494062320381419, guid: ab3cefda7dbcfdb419478abf6901a767, type: 3}
+      propertyPath: m_Name
+      value: HealthBar
+      objectReference: {fileID: 0}
     - target: {fileID: 5695909928818289637, guid: ab3cefda7dbcfdb419478abf6901a767, type: 3}
       propertyPath: m_Name
       value: BotPlayer3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589243518505671295, guid: ab3cefda7dbcfdb419478abf6901a767, type: 3}
+      propertyPath: m_text
+      value: Bot3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8717813728247702317, guid: ab3cefda7dbcfdb419478abf6901a767, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8717813728247702317, guid: ab3cefda7dbcfdb419478abf6901a767, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9083211761601335815, guid: ab3cefda7dbcfdb419478abf6901a767, type: 3}
       propertyPath: m_Name
@@ -455,7 +471,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -573,6 +589,18 @@ PrefabInstance:
     - target: {fileID: 5695909928818289637, guid: ab3cefda7dbcfdb419478abf6901a767, type: 3}
       propertyPath: m_Name
       value: BotPlayer1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589243518505671295, guid: ab3cefda7dbcfdb419478abf6901a767, type: 3}
+      propertyPath: m_text
+      value: Bot 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8717813728247702317, guid: ab3cefda7dbcfdb419478abf6901a767, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8717813728247702317, guid: ab3cefda7dbcfdb419478abf6901a767, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9083211761601335815, guid: ab3cefda7dbcfdb419478abf6901a767, type: 3}
       propertyPath: m_Name
@@ -804,6 +832,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: BotPlayer2
       objectReference: {fileID: 0}
+    - target: {fileID: 8589243518505671295, guid: ab3cefda7dbcfdb419478abf6901a767, type: 3}
+      propertyPath: m_text
+      value: Bot 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8717813728247702317, guid: ab3cefda7dbcfdb419478abf6901a767, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8717813728247702317, guid: ab3cefda7dbcfdb419478abf6901a767, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9083211761601335815, guid: ab3cefda7dbcfdb419478abf6901a767, type: 3}
       propertyPath: m_Name
       value: BotArea2
@@ -1022,9 +1062,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5695909928818289637, guid: ab3cefda7dbcfdb419478abf6901a767, type: 3}
-      propertyPath: m_Name
-      value: MyPlayer
+    - target: {fileID: 8545240571775495504, guid: ab3cefda7dbcfdb419478abf6901a767, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 438
+      objectReference: {fileID: 0}
+    - target: {fileID: 8717813728247702317, guid: ab3cefda7dbcfdb419478abf6901a767, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8717813728247702317, guid: ab3cefda7dbcfdb419478abf6901a767, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9083211761601335815, guid: ab3cefda7dbcfdb419478abf6901a767, type: 3}
       propertyPath: m_Name

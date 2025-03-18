@@ -8,18 +8,26 @@ public class Player : MonoBehaviour
     private int maxHp = 1000;
     private int coin;
     private int soul;
+
+    public int decreaseHealth;
+    public HealthBar healthBar;
     
     // Start is called before the first frame update
-    void Start(){
+    void Start()
+    {
         hp = maxHp;
+        healthBar = transform.parent.GetComponentInChildren<HealthBar>();
+        healthBar.Init(maxHp);
     }
-    
-    public bool SpendCoin(int amount){
+
+    public bool SpendCoin(int amount)
+    {
         if (coin - amount < 0)
         {
             //TODO:: NOT ENOUGH COIN ALERT
             return false;
         }
+
         coin -= amount;
         return true;
     }
@@ -31,14 +39,28 @@ public class Player : MonoBehaviour
             //TODO:: NOT ENOUGH SOUL ALERT
             return false;
         }
+
         return true;
     }
 
-    public void AddCoin(int amount){
+    public void AddCoin(int amount)
+    {
         coin += amount;
     }
-    
-    public void AddSoul(int amount){
+
+    public void AddSoul(int amount)
+    {
         soul += amount;
+    }
+
+    public void DecreaseHealth(int amount)
+    {
+        hp -= amount;
+        healthBar.DecreaseHealth(amount);
+        if (hp <= 0)
+        {
+            Debug.Log("Player dead");
+            Managers.Game.GameOver(this);
+        }
     }
 }
