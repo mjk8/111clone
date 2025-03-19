@@ -64,9 +64,5 @@ public class Managers : MonoBehaviour
     
     public static void Clear()
     {
-        //TODO: 씬 넘어갈때 클리어해야할 것들 여기에 다 추가 해야함
-        Sound.Clear();
-        UI.Clear();
-        Pool.Clear();
     }
 }

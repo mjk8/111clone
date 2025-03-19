@@ -8,8 +8,8 @@ using UnityEngine.EventSystems;
 public class Mob : Monster
 {
     private int coin = 3;
-    
-    void OnEnable()
+
+    public void OnEnable()
     {
         base.OnEnable();
         coin = _mobSpwaner.mobRewardCoin;
@@ -39,6 +39,7 @@ public class Mob : Monster
     {
         base.OnDestroy();
         Managers.Player.AddCoinToPlayer(coin,_player);
+        this.enabled = false;
     }
     
     public float fadeDuration = 1.5f;

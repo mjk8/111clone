@@ -8,6 +8,7 @@ public class GameManager: MonoBehaviour
     
     public static GameObject root;
     
+    
     //웨이브 관련 데이터
     private float _waveTotalTime = 10f;
     private float _waveBossTotalTime = 30f;
@@ -30,7 +31,6 @@ public class GameManager: MonoBehaviour
         //게임 준비 시간
         _waveTime = 2.0f;
     }
-
     void Update()
     {
         if (_waveTime <= 0)
@@ -41,6 +41,7 @@ public class GameManager: MonoBehaviour
         else
         {
             _waveTime -= Time.deltaTime;
+            Managers.UI.statusUI.UpdateSecondsNum((int)Math.Floor(_waveTime));
         }
     }
 
@@ -63,17 +64,19 @@ public class GameManager: MonoBehaviour
     #region Wave
     void EndWave()
     {
-        if (_currentWave%_bossWaveFrequency == 0)
+        if(_currentWave == 0){}
+        else if (_currentWave%_bossWaveFrequency == 0)
         {
             Managers.Player.AddSoulsToAllPlayers(_waveRewardSoul);
         }
         else{
             Managers.Player.AddCoinsToAllPlayers((_waveRewardCoin));
         }
+        ++_currentWave;
+        Managers.UI.statusUI.UpdateWaveNum(_currentWave);
     }
     void StartWave()
     {
-        ++_currentWave;
         //TODO:: 신규 웨이브 Alert
         
         //게임 클리어

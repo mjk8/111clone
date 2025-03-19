@@ -65,4 +65,30 @@ public class Player : MonoBehaviour
             Managers.Game.GameOver(this);
         }
     }
+    
+    public void Heal(int amount)
+    {
+        hp += amount;
+        if (hp > maxHp)
+        {
+            hp = maxHp;
+        }
+    }
+    
+    #region Getter Methods
+    public int GetHp()
+    {
+        return hp;
+    }
+    
+    public int GetCoin()
+    {
+        return coin;
+    }
+    
+    public int GetSoul()
+    {
+        return soul;
+    }
+    #endregion
 }

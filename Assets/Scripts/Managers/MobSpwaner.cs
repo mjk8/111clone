@@ -19,7 +19,7 @@ public class MobSpwaner : MonoBehaviour
     public int bossHealth = 1000;
     public int bossRewardSoul = 2;
     public int bossDamage = 50;
-    
+
     public void SpawnMob(int hpIncrease, int waveTime)
     {
         mobCount = (waveTime - 2) * 2;
@@ -38,6 +38,7 @@ public class MobSpwaner : MonoBehaviour
         for (int i = 0; i < mobCount; ++i)
         {
             GameObject curMob = Managers.Resource.Instantiate("Mob",transform);
+            curMob.GetComponent<Mob>().enabled = true;
             yield return new WaitForSeconds(0.5f);
         }
         yield return new WaitForSeconds(1.0f);
@@ -46,7 +47,6 @@ public class MobSpwaner : MonoBehaviour
     IEnumerator SpawnBossCoroutine()
     {
         yield return new WaitForSeconds(1.0f);
-        Managers.Resource.Instantiate("Boss",transform);
     }
 
     private void OnDestroy()

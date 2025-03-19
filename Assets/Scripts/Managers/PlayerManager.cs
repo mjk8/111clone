@@ -7,6 +7,7 @@ public class PlayerManager
     public Player _myPlayer; //내 플레이어
     public List<Player> _players = new List<Player>(); //다른 플레이어들
     
+    
     public void Init()
     {
         _myPlayer = GameObject.Find("Player").GetComponent<Player>();
@@ -21,11 +22,16 @@ public class PlayerManager
         {
             player.AddCoin(coins);
         }
+        Managers.UI.statusUI.UpdateCoinNum(_myPlayer.GetCoin());
     }
     
     public void AddCoinToPlayer(int coins, Player player)
     {
         player.AddCoin(coins);
+        if (player == _myPlayer)
+        {
+            Managers.UI.statusUI.UpdateCoinNum(_myPlayer.GetCoin());
+        }
     }
     
     public void AddSoulsToAllPlayers(int souls)
@@ -34,11 +40,16 @@ public class PlayerManager
         {
             player.AddSoul(souls);
         }
+        Managers.UI.statusUI.UpdateSoulNum(_myPlayer.GetSoul());
     }
     
     public void AddSoulToPlayer(int souls, Player player)
     {
         player.AddSoul(souls);
+        if (player == _myPlayer)
+        {
+            Managers.UI.statusUI.UpdateSoulNum(_myPlayer.GetSoul());
+        }
     }
     
     public bool DecreasePlayerCoins(int coins, Player player)

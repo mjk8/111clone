@@ -6,6 +6,15 @@ using UnityEngine.UI;
 public class UIManager
 {
     
+    //UI 연결
+    public StatusUIScript statusUI;
+    
+    public void Init()
+    {
+        statusUI = GameObject.Find("StatusPanel").GetComponent<StatusUIScript>();
+    }
+    
+    /*
     public static GameObject root;
     public static GameObject sceneUI;
     public GameObject Root { get { return root; } }
@@ -51,5 +60,5 @@ public class UIManager
             Managers.Resource.Destroy(sceneUI);
         }
         CloseAllPopup();
-    }
+    }*/
 }

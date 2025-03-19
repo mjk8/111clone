@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -8,13 +9,12 @@ public class Boss : Monster
 {
     private int soul = 2;
     
-    
-    void OnEnable()
+    public void OnEnable()
     {
         base.OnEnable();
         soul = _mobSpwaner.bossRewardSoul;
     }
-    
+
     protected void Attacked(int damage, Define.JusulType jusulType)
     {
         base.Attacked(damage,jusulType);

@@ -38,6 +38,7 @@ public class JusulOwned : MonoBehaviour
     {
         if (Managers.Player.DecreasePlayerCoins(_newJusulCost, _player))
         {
+            Managers.UI.statusUI.UpdateCoinNum(_player.GetCoin());
             AddThisJusul(Managers.Jusul.GetRandomJusul(_summonLevel));
         }
         else
