@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -22,17 +23,20 @@ public class Monster : MonoBehaviour
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
     }
-    
+
     protected void OnEnable()
     {
+        _healthBar = transform.GetComponentInChildren<HealthBar>();
+        _healthText = _healthBar.GetComponentInChildren<TMP_Text>();
         _rigidbody2D.MovePosition(transform.parent.position);
         _mobSpwaner = transform.parent.GetComponent<MobSpwaner>();
         _player = transform.parent.parent.GetComponentInChildren<Player>();
         moveSpeed = _mobSpwaner.mobSpeed;
         health = _mobSpwaner.mobHealth;
         damage = _mobSpwaner.mobDamage;
+        _healthBar.Init(health);
     }
-    
+
     protected void FixedUpdate()
     {
         if (!isPlayerCollide)

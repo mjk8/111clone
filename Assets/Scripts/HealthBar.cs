@@ -10,16 +10,20 @@ public class HealthBar : MonoBehaviour
     public int currentHealth = 100;
     Slider _slider;
 
-    public void Start()
+    public void Awake()
     {
         _slider = GetComponent<Slider>();
-        _slider.minValue = 0f;
     }
 
     public void Init(int health)
     {
+        if (_slider == null)
+        {
+            _slider = GetComponent<Slider>();
+        }
         _slider.maxValue = health;
         _slider.value = health;
+        _slider.minValue = 0f;
     }
     
     public void DecreaseHealth(int amount)

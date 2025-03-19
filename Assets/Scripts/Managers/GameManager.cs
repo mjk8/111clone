@@ -24,7 +24,7 @@ public class GameManager: MonoBehaviour
     private int _mobHealthIncrease = 100;
     
 
-    public void Start()
+    public void Awake()
     {
         _mobSpwaners= new List<MobSpwaner>(FindObjectsOfType<MobSpwaner>());;
         //게임 준비 시간
