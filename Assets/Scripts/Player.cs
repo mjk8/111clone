@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        jusulOwned = GetComponent<JusulOwned>();
         hp = maxHp;
         healthBar = transform.parent.GetComponentInChildren<HealthBar>();
         healthBar.Init(maxHp);

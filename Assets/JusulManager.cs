@@ -50,9 +50,10 @@ public class JusulManager
     /// </summary>
     /// <param name="jusulRank">업그레이드 하는 주술 랭크</param>
     /// <returns></returns>
-    public Tuple<int,int> GetRandomJusul(List<float> jusulUpgradeChance)
+    public Tuple<int,int> GetRandomJusul(int jusulUpgradeChance)
     {
-        return new Tuple<int, int>(GetRandomJusulRank(jusulUpgradeChance),GetRandomJusulType());
+        //소환확률 강화에 따른 확률 변동 추가
+        return new Tuple<int, int>(GetRandomJusulRank(_jusulInitialUpgradeChance),GetRandomJusulType());
     }
     
     /// <summary>
@@ -73,12 +74,12 @@ public class JusulManager
     //확률 등의, 헬퍼 함수
     #region JusulHelperFunctions
     
-    public int GetRandomJusulType()
+    private int GetRandomJusulType()
     {
         return UnityEngine.Random.Range(0, Util.GetNumberOfItemsInEnum<Define.JusulType>());
     }
     
-    public int GetRandomJusulRank(List<float> jusulUpgradeChance)
+    private int GetRandomJusulRank(List<float> jusulUpgradeChance)
     {
         float random = Util.GetRandomNumberOutOf100();
         float sum = 0;

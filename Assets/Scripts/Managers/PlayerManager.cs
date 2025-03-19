@@ -40,6 +40,16 @@ public class PlayerManager
     {
         player.AddSoul(souls);
     }
+    
+    public bool DecreasePlayerCoins(int coins, Player player)
+    {
+        return player.SpendCoin(coins);
+    }
+    
+    public void DecreasePlayerSouls(int souls, Player player)
+    {
+        player.SpendSoul(souls);
+    }
 
     public void DecreasePlayerHealth(int health, Player player)
     {
