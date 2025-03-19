@@ -57,6 +57,16 @@ public class JusulManager
     }
     
     /// <summary>
+    /// 채굴: 해당 랭크의 랜덤 속성 주술 반환
+    /// </summary>
+    /// <param name="jusulRank">업그레이드 하는 주술 랭크</param>
+    /// <returns></returns>
+    public Tuple<int,int> MineRankJusul(int jusulRank)
+    {
+        return new Tuple<int, int>(jusulRank,GetRandomJusulType());
+    }
+    
+    /// <summary>
     /// 주술 합성: 다음 랭크의 랜덤 속성 주술 반환
     /// </summary>
     /// <param name="jusulRank">업그레이드 하는 주술 랭크</param>

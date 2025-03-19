@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class JusulOwned : MonoBehaviour
@@ -8,10 +9,10 @@ public class JusulOwned : MonoBehaviour
     public Player _player;
     
     //새로운 주술 구매 비용
-    private int _newJusulCost = 20;
+    public int _newJusulCost = 20;
     //소환확률 강화 레벨
     private int _summonLevel = 0;
-    
+
     //jusulList[랭크][타입] = 보유 주술 수
     List<List<int>> _jusulList = new List<List<int>>();
     
@@ -56,12 +57,8 @@ public class JusulOwned : MonoBehaviour
         }
     }
 
-    #region Helper
-
-    private void AddThisJusul(Tuple<int, int> newVal)
+    public void AddThisJusul(Tuple<int, int> newVal)
     {
         ++_jusulList[newVal.Item1][newVal.Item2];
     }
-
-    #endregion
 }

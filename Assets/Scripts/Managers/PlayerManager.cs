@@ -57,9 +57,15 @@ public class PlayerManager
         return player.SpendCoin(coins);
     }
     
-    public void DecreasePlayerSouls(int souls, Player player)
+    public bool DecreaseMyPlayerSoul(int souls)
     {
-        player.SpendSoul(souls);
+        if( _myPlayer.SpendSoul(souls) )
+        {
+            Managers.UI.statusUI.UpdateSoulNum(_myPlayer.GetSoul());
+            return true;
+        }
+
+        return false;
     }
 
     public void DecreasePlayerHealth(int health, Player player)
