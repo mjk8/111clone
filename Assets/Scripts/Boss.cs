@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 
 public class Boss : Monster
 {
-    private int soul = 2;
+    protected int soul = 2;
     
     public void OnEnable()
     {
@@ -15,10 +15,19 @@ public class Boss : Monster
         soul = _mobSpwaner.bossRewardSoul;
     }
 
+    private void Start()
+    {
+        if (_healthText == null)
+        {
+            _healthText = GetComponentInChildren<TMP_Text>();
+        }
+        _healthText.color = Color.white;
+        _healthText.text = health.ToString();
+    }
+
     protected void Attacked(int damage, Define.JusulType jusulType)
     {
         base.Attacked(damage,jusulType);
-        _healthText.color = Color.white;
         _healthText.text = health.ToString();
     }
 

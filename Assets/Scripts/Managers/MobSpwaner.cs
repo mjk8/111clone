@@ -9,6 +9,12 @@ public class MobSpwaner : MonoBehaviour
     public float spawnTime = 0.5f;
     public int mobCount = 10;
     
+    //현상금 관련
+    public int rewardCoin = 200;
+    public int rewardSoul = 1;
+    public float coolTime = 60f;
+    public float BountyTimer = 0.0f;
+    
     //몬스터 관련
     public float mobSpeed = 1000.0f;
     public int mobHealth = 100;
@@ -47,6 +53,31 @@ public class MobSpwaner : MonoBehaviour
     IEnumerator SpawnBossCoroutine()
     {
         yield return new WaitForSeconds(1.0f);
+        GameObject curMob = Managers.Resource.Instantiate("Boss",transform);
+        curMob.GetComponent<Boss>().enabled = true;
+    }
+
+    
+    /// <summary>
+    /// 현상금 몬스터를 소환하는 기본 함수
+    /// </summary>
+    public void SpawnBounty(bool isCoin = true, int rewardCoin = 200, int hp = 250000)
+    {
+        GameObject curMob = Managers.Resource.Instantiate("Bounty", transform);
+        Bounty bounty = curMob.GetComponent<Bounty>();
+        bounty.SetBounty(true,rewardCoin,rewardSoul);
+    }
+    
+    // 200코인 현상금
+    public void SpawnBounty1()
+    {
+        SpawnBounty(true,200,25000);
+    }
+    
+    // 1영혼 현상금
+    public void SpawnBounty2()
+    {
+        SpawnBounty(false,1,50000);
     }
 
     private void OnDestroy()

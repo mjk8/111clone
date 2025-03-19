@@ -69,10 +69,10 @@ BoxCollider2D:
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 55
   m_ForceReceiveLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 55
   m_ContactCaptureLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -93,7 +93,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 100, y: 150}
+  m_Size: {x: 100, y: 100}
   m_EdgeRadius: 0
 --- !u!114 &1322295881712231856
 MonoBehaviour:
@@ -137,6 +137,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58f1157027fd2714da189c45c8380120, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _mobSpwaner: {fileID: 0}
+  _player: {fileID: 0}
+  _rigidbody2D: {fileID: 0}
 --- !u!50 &2698309933719849104
 Rigidbody2D:
   serializedVersion: 4
@@ -280,7 +283,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 32523471357454678, guid: 20280a1c6c33d474ab9737af371ad842, type: 3}
       propertyPath: m_fontSize
-      value: 18.7
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 32523471357454678, guid: 20280a1c6c33d474ab9737af371ad842, type: 3}
       propertyPath: m_margin.w
@@ -324,7 +327,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5339434430814516031, guid: 20280a1c6c33d474ab9737af371ad842, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 46
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5339434430814516031, guid: 20280a1c6c33d474ab9737af371ad842, type: 3}
       propertyPath: m_LocalPosition.x
