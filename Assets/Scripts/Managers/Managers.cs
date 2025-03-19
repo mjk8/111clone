@@ -15,7 +15,7 @@ public class Managers : MonoBehaviour
     PoolManager _pool = new PoolManager();
     PlayerManager _player = new PlayerManager();
     GameManager _game;
-    
+    JusulManager _jusul = new JusulManager();
     
     
     public static  ResourceManager Resource { get { return Instance._resource;} }
@@ -25,6 +25,7 @@ public class Managers : MonoBehaviour
     public static PoolManager Pool { get { return Instance._pool; } }
     public static GameManager Game { get { return Instance._game; } }
     public static PlayerManager Player { get { return Instance._player; } }
+    public static JusulManager Jusul { get { return Instance._jusul; } }
     
 
     void Start()
@@ -55,6 +56,7 @@ public class Managers : MonoBehaviour
             _instance._pool.Init();
             _instance._player.Init();
             _instance._ui.Init();
+            //_instance._jusul.Init();
             
         }
     }

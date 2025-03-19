@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
 
     public int decreaseHealth;
     public HealthBar healthBar;
+    public JusulOwned jusulOwned;
     
     // Start is called before the first frame update
     void Start()

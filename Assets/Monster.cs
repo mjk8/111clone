@@ -1,37 +1,39 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
-public class Boss : MonoBehaviour
+public class Monster : MonoBehaviour
 {
-    private float moveSpeed = 10f;
-    private int health = 100;
-    private int damage = 10;
-    private int soul = 2;
+    protected float moveSpeed = 10f;
+    protected int health = 100;
+    protected int damage = 10;
     
-    MobSpwaner _mobSpwaner;
-    Player _player;
-    Rigidbody2D _rigidbody2D;
+    protected MobSpwaner _mobSpwaner;
+    protected Player _player;
+    protected Rigidbody2D _rigidbody2D;
     
-    bool isPlayerCollide = false;
+    protected bool isPlayerCollide = false;
     
-    void Awake()
+    protected HealthBar _healthBar;
+    protected TMP_Text _healthText;
+    
+    protected void Awake()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
     }
-    void OnEnable()
+    
+    protected void OnEnable()
     {
         _rigidbody2D.MovePosition(transform.parent.position);
         _mobSpwaner = transform.parent.GetComponent<MobSpwaner>();
         _player = transform.parent.parent.GetComponentInChildren<Player>();
-        moveSpeed = _mobSpwaner.bossSpeed;
-        health = _mobSpwaner.bossHealth;
-        damage = _mobSpwaner.bossDamage;
-        soul = _mobSpwaner.bossRewardSoul;
+        moveSpeed = _mobSpwaner.mobSpeed;
+        health = _mobSpwaner.mobHealth;
+        damage = _mobSpwaner.mobDamage;
     }
-    private void FixedUpdate()
+    
+    protected void FixedUpdate()
     {
         if (!isPlayerCollide)
         {
@@ -43,7 +45,7 @@ public class Boss : MonoBehaviour
         }
     }
     
-    private void OnTriggerEnter2D(Collider2D other)
+    protected void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log("OnTriggerEnter2D");
         if (other.CompareTag("Player"))
@@ -53,7 +55,7 @@ public class Boss : MonoBehaviour
         }
     }
 
-    IEnumerator AttackPlayer()
+    protected IEnumerator AttackPlayer()
     {
         while (isPlayerCollide)
         {
@@ -61,10 +63,19 @@ public class Boss : MonoBehaviour
             yield return new WaitForSeconds(1.0f);
         }
     }
-
-    private void OnDestroy()
+    
+    protected void Attacked(int damage, Define.JusulType jusulType)
     {
-        Managers.Player.AddSoulToPlayer(soul,_player);
+        health -= damage;
+        _healthBar.DecreaseHealth(damage);
+        if (health <= 0)
+        {
+            Destroy(transform.gameObject);
+        }
+    }
+    
+    protected void OnDestroy()
+    {
         isPlayerCollide = false;
         StopCoroutine(AttackPlayer());
     }

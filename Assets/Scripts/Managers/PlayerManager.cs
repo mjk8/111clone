@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerManager
 {
-    public Player _myPlayer; //내 데디서버 플레이어
-    public List<Player> _players = new List<Player>(); //모든 플레이어
+    public Player _myPlayer; //내 플레이어
+    public List<Player> _players = new List<Player>(); //다른 플레이어들
     
     public void Init()
     {
