@@ -22,7 +22,7 @@ public class GameManager: MonoBehaviour
     private int _bossWaveFrequency = 10; //보스 웨이브 주기
     private int _MaxWave = 20; //최대 웨이브
     private int _bossHealth = 100000;
-    private int _mobHealthIncrease = 100;
+    private float _mobHealthIncrease = 1.3f;
     
 
     public void Awake()

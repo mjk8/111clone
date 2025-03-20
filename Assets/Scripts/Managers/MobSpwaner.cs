@@ -22,7 +22,7 @@ public class MobSpwaner : MonoBehaviour
     public int mobDamage = 10;
     
     public float bossSpeed = 1000.0f;
-    public int bossHealth = 1000;
+    public int bossHealth = 10000;
     public int bossRewardSoul = 2;
     public int bossDamage = 50;
     
@@ -40,15 +40,16 @@ public class MobSpwaner : MonoBehaviour
         }
     }
 
-    public void SpawnMob(int hpIncrease, int waveTime)
+    public void SpawnMob(float hpIncrease, int waveTime)
     {
         mobCount = (waveTime - 2) * 2;
+        mobHealth = (int)(mobHealth * hpIncrease);
         StartCoroutine(SpawnMobCoroutine());
     }
 
     public void SpawnBoss()
     {
-        bossHealth += 1000;
+        bossHealth *=10;
         StartCoroutine(SpawnBossCoroutine());
     }
     

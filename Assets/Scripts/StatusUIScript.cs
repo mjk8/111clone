@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -17,7 +18,13 @@ public class StatusUIScript : MonoBehaviour
         SoulNum.text = "0";
         SecondsNum.text = "0";
     }
-    
+
+    private void Start()
+    {
+        UpdateCoinNum(Managers.Player._myPlayer.GetCoin());
+        UpdateCoinNum(Managers.Player._myPlayer.GetSoul());
+    }
+
     public void UpdateWaveNum(int wave)
     {
         WaveNum.text = wave.ToString("D2");
