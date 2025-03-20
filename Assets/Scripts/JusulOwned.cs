@@ -38,10 +38,13 @@ public class JusulOwned : MonoBehaviour
         _player = GetComponent<Player>();
     }
 
+    [SerializeField] private TMP_Text _jusulSummonCostText;
     public void playerJusulAdd()
     {
         if (Managers.Player.DecreasePlayerCoins(_newJusulCost, _player))
         {
+            ++_newJusulCost;
+            _jusulSummonCostText.text = _newJusulCost.ToString();
             Managers.UI.statusUI.UpdateCoinNum(_player.GetCoin());
             AddThisJusul(Managers.Jusul.GetRandomJusul(_summonLevel, _summonLevel));
         }

@@ -4731,6 +4731,7 @@ MonoBehaviour:
   jusulEarthDamageLevel: 0
   jusulWaterDamageLevel: 0
   shinSuUpgradeLevel: 0
+  _jusulSummonCostText: {fileID: 0}
 --- !u!114 &971441633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8533,6 +8534,7 @@ MonoBehaviour:
   jusulEarthDamageLevel: 0
   jusulWaterDamageLevel: 0
   shinSuUpgradeLevel: 0
+  _jusulSummonCostText: {fileID: 0}
 --- !u!114 &1757216699
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9631,6 +9633,7 @@ MonoBehaviour:
   jusulEarthDamageLevel: 0
   jusulWaterDamageLevel: 0
   shinSuUpgradeLevel: 0
+  _jusulSummonCostText: {fileID: 0}
 --- !u!114 &1980214050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11128,6 +11131,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4356021842330060190, guid: ab3cefda7dbcfdb419478abf6901a767, type: 3}
+      propertyPath: _jusulSummonCostText
+      value: 
+      objectReference: {fileID: 1337296078}
     - target: {fileID: 8717813728247702317, guid: ab3cefda7dbcfdb419478abf6901a767, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

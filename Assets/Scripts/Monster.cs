@@ -56,14 +56,6 @@ public abstract class Monster : MonoBehaviour
             isPlayerCollide = true;
             StartCoroutine(AttackPlayer());
         }
-        
-        if (other.CompareTag("Player"))
-        {
-            isPlayerCollide = true;
-            StartCoroutine(AttackPlayer());
-        }
-        
-        Managers.Resource.Destroy(this.gameObject);
     }
 
     protected IEnumerator AttackPlayer()

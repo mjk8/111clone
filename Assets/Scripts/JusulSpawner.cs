@@ -121,16 +121,17 @@ public class JusulSpawner : MonoBehaviour
 
     #region JusulSkill
 
-    private int closeRange = 150;
+    private int closeRange = 50;
     //스킬들
     public void Earth0()
     {
         for(int i = 0;i<_mobs.childCount; ++i)
         {
-            if ((transform.position.y - _mobs.GetChild(i).transform.position.y) < closeRange)
+            float verticalDistance = Mathf.Abs((_player.GetComponent<RectTransform>().anchoredPosition.y) - (_mobs.GetChild(i).GetComponent<RectTransform>().anchoredPosition.y));
+            if (verticalDistance < closeRange)
             {
                 _mobs.GetChild(i).GetComponent<Monster>().Attacked(
-                    320 * (_jusulOwned.jusulEarthDamageLevel > 0 ? _jusulOwned.jusulEarthDamageLevel : 1),
+                    320 * (_jusulOwned.jusulEarthDamageLevel > 0 ? 2: 1),
                     Define.JusulType.땅);
             }
         }
@@ -140,10 +141,11 @@ public class JusulSpawner : MonoBehaviour
     {
         for(int i = 0;i<_mobs.childCount; ++i)
         {
-            if ((transform.position.y - _mobs.GetChild(i).transform.position.y) < closeRange)
+            float verticalDistance = Mathf.Abs((_player.GetComponent<RectTransform>().anchoredPosition.y) - (_mobs.GetChild(i).GetComponent<RectTransform>().anchoredPosition.y));
+            if (verticalDistance < closeRange)
             {
                 _mobs.GetChild(i).GetComponent<Monster>().Attacked(
-                    1700 * (_jusulOwned.jusulEarthDamageLevel > 0 ? _jusulOwned.jusulEarthDamageLevel : 1),
+                    1700 * (_jusulOwned.jusulEarthDamageLevel > 0 ? 2 : 1),
                     Define.JusulType.땅);
             }
         }
@@ -157,7 +159,7 @@ public class JusulSpawner : MonoBehaviour
         for(int i = 0;i<Math.Min(_mobs.childCount,1); ++i)
         {
             _mobs.GetChild(i).GetComponent<Monster>().Attacked(
-                8500 * (_jusulOwned.jusulEarthDamageLevel > 0 ? _jusulOwned.jusulEarthDamageLevel : 1),
+                8500 * (_jusulOwned.jusulEarthDamageLevel > 0 ? 2: 1),
                 Define.JusulType.땅);
         }
     }
@@ -167,11 +169,12 @@ public class JusulSpawner : MonoBehaviour
         bool flag = false;
         for(int i = 0;i<_mobs.childCount; ++i)
         {
-            if ((transform.position.y - _mobs.GetChild(i).transform.position.y) < closeRange)
+            float verticalDistance = Mathf.Abs((_player.GetComponent<RectTransform>().anchoredPosition.y) - (_mobs.GetChild(i).GetComponent<RectTransform>().anchoredPosition.y));
+            if (verticalDistance < closeRange)
             {
                 flag = true;
                 _mobs.GetChild(i).GetComponent<Monster>().Attacked(
-                    7150 * (_jusulOwned.jusulEarthDamageLevel > 0 ? _jusulOwned.jusulEarthDamageLevel : 1),
+                    7150 * (_jusulOwned.jusulEarthDamageLevel > 0 ? 2 : 1),
                     Define.JusulType.땅);
             }
         }
@@ -190,7 +193,7 @@ public class JusulSpawner : MonoBehaviour
             for(int i = 0;i<_mobs.childCount; ++i)
             {
                 _mobs.GetChild(i).GetComponent<Monster>().Attacked(
-                    340000 * (_jusulOwned.jusulEarthDamageLevel > 0 ? _jusulOwned.jusulEarthDamageLevel : 1),
+                    340000 * (_jusulOwned.jusulEarthDamageLevel > 0 ? 2: 1),
                     Define.JusulType.땅);
             }
         }
@@ -200,7 +203,7 @@ public class JusulSpawner : MonoBehaviour
             for(int i = 0;i<5+extra; ++i)
             {
                 _mobs.GetChild(random.Next(0, _mobs.childCount)).GetComponent<Monster>().Attacked(
-                    8500 * (_jusulOwned.jusulEarthDamageLevel > 0 ? _jusulOwned.jusulEarthDamageLevel : 1),
+                    8500 * (_jusulOwned.jusulEarthDamageLevel > 0 ? 2 : 1),
                     Define.JusulType.땅);
             }
         }
@@ -213,12 +216,12 @@ public class JusulSpawner : MonoBehaviour
             if (i == 0)
             {
                 _mobs.GetChild(0).GetComponent<Monster>().Attacked(
-                    320000 * (_jusulOwned.jusulEarthDamageLevel > 0 ? _jusulOwned.jusulEarthDamageLevel : 1),
+                    320000 * (_jusulOwned.jusulEarthDamageLevel > 0 ? 2 : 1),
                     Define.JusulType.땅);
                 continue;
             }
             _mobs.GetChild(i).GetComponent<Monster>().Attacked(
-                32000 * (_jusulOwned.jusulEarthDamageLevel > 0 ? _jusulOwned.jusulEarthDamageLevel : 1),
+                32000 * (_jusulOwned.jusulEarthDamageLevel > 0 ? 2 : 1),
                 Define.JusulType.땅);
         }
     }
@@ -227,7 +230,7 @@ public class JusulSpawner : MonoBehaviour
     {
         for(int i = 0;i<Math.Min(_mobs.childCount,1); ++i)
         {
-            _mobs.GetChild(i).GetComponent<Monster>().Attacked(143*(_jusulOwned.jusulWaterDamageLevel>0?_jusulOwned.jusulWaterDamageLevel:1), Define.JusulType.물);
+            _mobs.GetChild(i).GetComponent<Monster>().Attacked(143*(_jusulOwned.jusulWaterDamageLevel>0?2:1), Define.JusulType.물);
         }
     }
     
@@ -235,7 +238,7 @@ public class JusulSpawner : MonoBehaviour
     {
         for(int i = 0;i<Math.Min(_mobs.childCount,5); ++i)
         {
-            _mobs.GetChild(i).GetComponent<Monster>().Attacked(520*(_jusulOwned.jusulWaterDamageLevel>0?_jusulOwned.jusulWaterDamageLevel:1), Define.JusulType.물);
+            _mobs.GetChild(i).GetComponent<Monster>().Attacked(520*(_jusulOwned.jusulWaterDamageLevel>0?2:1), Define.JusulType.물);
         }
     }
     
@@ -244,7 +247,7 @@ public class JusulSpawner : MonoBehaviour
         for(int i = 0;i<Math.Min(_mobs.childCount,1); ++i)
         {
             _mobs.GetChild(i).GetComponent<Monster>().SlowDown(2);
-            _mobs.GetChild(i).GetComponent<Monster>().Attacked(2500*(_jusulOwned.jusulWaterDamageLevel>0?_jusulOwned.jusulWaterDamageLevel:1), Define.JusulType.물);
+            _mobs.GetChild(i).GetComponent<Monster>().Attacked(2500*(_jusulOwned.jusulWaterDamageLevel>0?2:1), Define.JusulType.물);
         }
     }
     
@@ -254,7 +257,7 @@ public class JusulSpawner : MonoBehaviour
         for(int i = 0;i<Math.Min(_mobs.childCount,5); ++i)
         {
             _mobs.GetChild(i).GetComponent<Monster>().SlowDown(2);
-            _mobs.GetChild(i).GetComponent<Monster>().Attacked(2500*(_jusulOwned.jusulWaterDamageLevel>0?_jusulOwned.jusulWaterDamageLevel:1), Define.JusulType.물);
+            _mobs.GetChild(i).GetComponent<Monster>().Attacked(2500*(_jusulOwned.jusulWaterDamageLevel>0?2:1), Define.JusulType.물);
         }
     }
     
@@ -262,13 +265,13 @@ public class JusulSpawner : MonoBehaviour
     {
         for(int i = 0;i<Math.Min(_mobs.childCount,1); ++i)
         {
-            _mobs.GetChild(i).GetComponent<Monster>().Attacked(75000*(_jusulOwned.jusulWaterDamageLevel>0?_jusulOwned.jusulWaterDamageLevel:1), Define.JusulType.물);
+            _mobs.GetChild(i).GetComponent<Monster>().Attacked(75000*(_jusulOwned.jusulWaterDamageLevel>0?2:1), Define.JusulType.물);
         }
     }
     
     public void Water5()
     {
-        int attack = 96000*(_jusulOwned.jusulWaterDamageLevel>0?_jusulOwned.jusulWaterDamageLevel:1);
+        int attack = 96000*(_jusulOwned.jusulWaterDamageLevel>0?2:1);
         for(int i = 0;i<_mobs.childCount; ++i)
         {
             _mobs.GetChild(i).GetComponent<Monster>().Attacked(attack, Define.JusulType.물);
