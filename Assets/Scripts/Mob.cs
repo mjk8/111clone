@@ -25,7 +25,7 @@ public class Mob : Monster
         _healthText.enabled = false;
     }
 
-    public void Attacked(int damage, Define.JusulType jusulType)
+    /*public void Attacked(int damage, Define.JusulType jusulType)
     {
         base.Attacked(damage,jusulType);
         StopCoroutine(FadeOut());
@@ -33,7 +33,7 @@ public class Mob : Monster
         _healthText.text = health.ToString();
         _healthText.enabled = true;
         StartCoroutine(FadeOut());
-    }
+    }*/
 
     private void OnDestroy()
     {

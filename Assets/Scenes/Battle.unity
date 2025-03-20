@@ -11022,11 +11022,11 @@ PrefabInstance:
       objectReference: {fileID: 1337296078}
     - target: {fileID: 4438548519905595652, guid: ab3cefda7dbcfdb419478abf6901a767, type: 3}
       propertyPath: coin
-      value: 5000
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4438548519905595652, guid: ab3cefda7dbcfdb419478abf6901a767, type: 3}
       propertyPath: soul
-      value: 100
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7812943889487924679, guid: ab3cefda7dbcfdb419478abf6901a767, type: 3}
       propertyPath: m_Enabled

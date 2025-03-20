@@ -14,15 +14,9 @@ public class StatusUIScript : MonoBehaviour
     private void Awake()
     {
         WaveNum.text = "0";
-        CoinNum.text = "0";
+        CoinNum.text = "100";
         SoulNum.text = "0";
         SecondsNum.text = "0";
-    }
-
-    private void Start()
-    {
-        UpdateCoinNum(Managers.Player._myPlayer.GetCoin());
-        UpdateCoinNum(Managers.Player._myPlayer.GetSoul());
     }
 
     public void UpdateWaveNum(int wave)

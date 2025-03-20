@@ -69,7 +69,6 @@ public class PlayerManager
             Managers.UI.statusUI.UpdateSoulNum(_myPlayer.GetSoul());
             return true;
         }
-
         return false;
     }
 

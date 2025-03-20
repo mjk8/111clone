@@ -125,7 +125,7 @@ public class JusulSpawner : MonoBehaviour
 
     #region JusulSkill
 
-    private int closeRange = 30;
+    private int closeRange = 70;
     //스킬들
     public void Earth0()
     {
@@ -390,7 +390,6 @@ public class JusulSpawner : MonoBehaviour
 
     IEnumerator WaterAttack(float time, int damage, Transform t)
     {
-        Debug.Log(time);
         yield return new WaitForSeconds(time/5);
         if (t != null)
         {

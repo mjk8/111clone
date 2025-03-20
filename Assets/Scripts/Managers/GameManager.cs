@@ -7,7 +7,7 @@ public class GameManager: MonoBehaviour
 {
     
     public static GameObject root;
-    
+    public int bossSpawned=0;
     
     //웨이브 관련 데이터
     private float _waveTotalTime = 10f;
@@ -45,6 +45,11 @@ public class GameManager: MonoBehaviour
         }
     }
     
+    public void WaveEnd()
+    {
+        _waveTime = 0;
+    }
+    
     public List<bool> _isPlayerDead = new List<bool>(){ false, false, false, false };
     public void GameOver(Player player)
     {
@@ -58,7 +63,9 @@ public class GameManager: MonoBehaviour
             //TODO:: GameOver UI
             Managers.Resource.Destroy(player.transform.parent.GetChild(0).gameObject);
             Managers.Resource.Destroy(player.gameObject);
-            Application.Quit();
+            Managers.Resource.Destroy(Managers.UI.jusulUI.gameObject);
+            Managers.Resource.Destroy(Managers.UI.statusUI.gameObject);
+            Managers.Resource.Destroy(Managers.UI.bountyTimerText.gameObject);
         }
         else
         {

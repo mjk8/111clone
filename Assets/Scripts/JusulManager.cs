@@ -118,7 +118,7 @@ public class JusulManager
     
     private int GetRandomJusulType()
     {
-        return UnityEngine.Random.Range(0, Util.GetNumberOfItemsInEnum<Define.JusulType>());
+        return UnityEngine.Random.Range(0, 2);
     }
     
     private int GetRandomJusulRank(List<float> jusulUpgradeChance)

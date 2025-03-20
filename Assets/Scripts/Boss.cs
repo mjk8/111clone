@@ -23,17 +23,17 @@ public class Boss : Monster
         }
         _healthText.color = Color.white;
         _healthText.text = health.ToString();
-    }
-
-    protected void Attacked(int damage, Define.JusulType jusulType)
-    {
-        base.Attacked(damage,jusulType);
-        _healthText.text = health.ToString();
+        Managers.Game.bossSpawned++;
     }
 
     private void OnDestroy()
     {
         base.OnDestroy();
+        Managers.Game.bossSpawned--;
+        if(Managers.Game.bossSpawned == 0)
+        {
+            Managers.Game.WaveEnd();
+        }
         Managers.Player.AddSoulToPlayer(soul,_player);
     }
 }

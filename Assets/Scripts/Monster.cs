@@ -75,6 +75,8 @@ public abstract class Monster : MonoBehaviour
         {
             Destroy(transform.gameObject);
         }
+        _healthText.color = Color.white;
+        _healthText.text = health.ToString();
         Debug.Log("Attacked: Mob "+transform.GetSiblingIndex());
     }
     
