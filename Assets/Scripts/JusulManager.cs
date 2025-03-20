@@ -19,8 +19,10 @@ public class JusulManager
     //주술 업그레이드 후 확률
     List<float> _jusulUpgradedChance = new List<float>{0.366f,0.2f,0.2f,0.14f,0.062f,0.032f};
     
+    public List<float> _coolTime;
+    
     //플레이어들에게 주술 정보가 할당 되기 전, 주술 관련 정보가 init되어야함.
-    public void Awake()
+    public void Init()
     {
         for (int i = 0; i < Util.GetNumberOfItemsInEnum<Define.JusulRank>(); i++)
         {
@@ -33,6 +35,20 @@ public class JusulManager
         _jusulColor.Add(Color.magenta);
         _jusulColor.Add(Color.yellow);
         _jusulColor.Add(Color.red);
+        
+        _coolTime = new List<float>();
+        _coolTime.Add(1.3f);
+        _coolTime.Add(4f);
+        _coolTime.Add(10f);
+        _coolTime.Add(2.5f);
+        _coolTime.Add(4f);
+        _coolTime.Add(10f);
+        _coolTime.Add(0.8f);
+        _coolTime.Add(3f);
+        _coolTime.Add(1f);
+        _coolTime.Add(3f);
+        _coolTime.Add(1.5f);
+        _coolTime.Add(3f);
     }
 
     public void ActivateJusul()

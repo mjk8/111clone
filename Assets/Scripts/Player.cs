@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     [SerializeField] private int coin;
     [SerializeField] private int soul;
 
+    private int healthShield = 0;
     public int decreaseHealth;
     public HealthBar healthBar;
     public JusulOwned jusulOwned;
@@ -22,7 +23,7 @@ public class Player : MonoBehaviour
         hp = maxHp;
     }
 
-    private void Start()
+    void Start()
     {
         healthBar = transform.parent.GetComponentInChildren<HealthBar>();
         healthBar.Init(maxHp);
@@ -63,12 +64,36 @@ public class Player : MonoBehaviour
 
     public void DecreaseHealth(int amount)
     {
+        if (healthShield > 0)
+        {
+            healthShield--;
+            return;
+        }
         hp -= amount;
         healthBar.DecreaseHealth(amount);
         if (hp <= 0)
         {
             Debug.Log("Player dead");
             Managers.Game.GameOver(this);
+        }
+    }
+
+    public void IncrementHealthShield()
+    {
+        healthShield++;
+    }
+    
+    public int GetHealthShield()
+    {
+        return healthShield;
+    }
+    
+    public void HealByPercentage(float percentage)
+    {
+        hp += (int)(maxHp * percentage/100);
+        if (hp > maxHp)
+        {
+            hp = maxHp;
         }
     }
     

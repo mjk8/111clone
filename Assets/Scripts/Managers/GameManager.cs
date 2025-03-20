@@ -44,9 +44,14 @@ public class GameManager: MonoBehaviour
             Managers.UI.statusUI.UpdateSecondsNum((int)Math.Floor(_waveTime));
         }
     }
-
+    
+    public List<bool> _isPlayerDead = new List<bool>(){ false, false, false, false };
     public void GameOver(Player player)
     {
+        foreach (var p in Managers.Player._players)
+        {
+            _isPlayerDead[Managers.Player._players.IndexOf(p)] = true;
+        }
         if (player.name == "MyPlayer")
         {
             //TODO:: GameOver UI

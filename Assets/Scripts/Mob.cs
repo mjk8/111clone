@@ -25,7 +25,7 @@ public class Mob : Monster
         _healthText.enabled = false;
     }
 
-    protected void Attacked(int damage, Define.JusulType jusulType)
+    public void Attacked(int damage, Define.JusulType jusulType)
     {
         base.Attacked(damage,jusulType);
         StopCoroutine(FadeOut());

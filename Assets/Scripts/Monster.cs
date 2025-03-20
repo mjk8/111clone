@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class Monster : MonoBehaviour
+public abstract class Monster : MonoBehaviour
 {
     protected float moveSpeed = 10f;
     protected int health = 100;
@@ -57,6 +57,12 @@ public class Monster : MonoBehaviour
             StartCoroutine(AttackPlayer());
         }
         
+        if (other.CompareTag("Player"))
+        {
+            isPlayerCollide = true;
+            StartCoroutine(AttackPlayer());
+        }
+        
         Managers.Resource.Destroy(this.gameObject);
     }
 
@@ -69,7 +75,7 @@ public class Monster : MonoBehaviour
         }
     }
     
-    protected void Attacked(int damage, Define.JusulType jusulType)
+    public void Attacked(int damage, Define.JusulType jusulType)
     {
         health -= damage;
         _healthBar.DecreaseHealth(damage);
@@ -77,6 +83,17 @@ public class Monster : MonoBehaviour
         {
             Destroy(transform.gameObject);
         }
+        Debug.Log("Attacked: Mob "+transform.GetSiblingIndex());
+    }
+    
+    public void SlowDown(float slowDownRate)
+    {
+        if (slowDownRate == 0)
+        {
+            return;
+        }
+        moveSpeed *= (1/slowDownRate);
+        Debug.Log("SlowedDown: Mob "+transform.GetSiblingIndex());
     }
     
     protected void OnDestroy()
