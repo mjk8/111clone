@@ -15,7 +15,7 @@ public class GameManager: MonoBehaviour
     private float _waveTime = 0f;
     private int _waveRewardCoin = 40;
     private int _waveRewardSoul = 2;
-    public static int _currentWave = 0;
+    [SerializeField] static int _currentWave = 0;
     
     //몬스터 스폰 데이터
     List<MobSpwaner> _mobSpwaners;

@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,11 +11,26 @@ public class UIManager
     //UI 연결
     public StatusUIScript statusUI;
     public JusulButtonUI jusulUI;
+    public TMP_Text bountyTimerText;
     
     public void Init()
     {
         statusUI = GameObject.Find("StatusPanel").GetComponent<StatusUIScript>();
         jusulUI = GameObject.Find("JusulButtons").GetComponent<JusulButtonUI>();
+        bountyTimerText = GameObject.Find("BountyTimerText").GetComponent<TMP_Text>();
+    }
+    
+    public void UpdateBountyTimerText(float timer)
+    {
+        if (timer <= 0)
+        {
+            bountyTimerText.transform.parent.gameObject.SetActive(false);
+        }
+        else
+        {
+            bountyTimerText.transform.parent.gameObject.SetActive(true);
+            bountyTimerText.text = Math.Floor(timer).ToString();
+        }
     }
     
     /*

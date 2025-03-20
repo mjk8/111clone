@@ -25,6 +25,20 @@ public class MobSpwaner : MonoBehaviour
     public int bossHealth = 1000;
     public int bossRewardSoul = 2;
     public int bossDamage = 50;
+    
+    
+    //현상금 스폰 시간
+    private float _bountySpawnTime = 60.0f;
+    private float _bountyTimer = 0.0f;
+    
+    private void Update()
+    {
+        if(_bountyTimer >= 0)
+        {
+            _bountyTimer -= Time.deltaTime;
+            Managers.UI.UpdateBountyTimerText(_bountyTimer);
+        }
+    }
 
     public void SpawnMob(int hpIncrease, int waveTime)
     {
@@ -63,6 +77,11 @@ public class MobSpwaner : MonoBehaviour
     /// </summary>
     public void SpawnBounty(bool isCoin = true, int rewardCoin = 200, int hp = 250000)
     {
+        if(_bountyTimer > 0)
+        {
+            return;
+        }
+        _bountyTimer = _bountySpawnTime;
         GameObject curMob = Managers.Resource.Instantiate("Bounty", transform);
         Bounty bounty = curMob.GetComponent<Bounty>();
         bounty.SetBounty(true,rewardCoin,rewardSoul);
