@@ -39,21 +39,38 @@ public class JusulOwned : MonoBehaviour
     }
 
     [SerializeField] private TMP_Text _jusulSummonCostText;
-    public void playerJusulAdd()
+    
+    /// <summary>
+    /// 주술 생성
+    /// </summary>
+    /// <returns></returns>
+    public bool playerJusulAdd()
     {
         if (Managers.Player.DecreasePlayerCoins(_newJusulCost, _player))
         {
             ++_newJusulCost;
-            _jusulSummonCostText.text = _newJusulCost.ToString();
-            Managers.UI.statusUI.UpdateCoinNum(_player.GetCoin());
+            // 플레이어라면 UI 업데이트
+            if (_player == Managers.Player._myPlayer)
+            {
+                _jusulSummonCostText.text = _newJusulCost.ToString();
+                Managers.UI.statusUI.UpdateCoinNum(_player.GetCoin());
+            }
+
             AddThisJusul(Managers.Jusul.GetRandomJusul(_summonLevel, _summonLevel));
+            return true;
         }
         else
         {
             //TODO:: 돈이 부족합니다 alert.
+            return false;
         }
     }
 
+    /// <summary>
+    /// 주술 합성
+    /// </summary>
+    /// <param name="jusulRank"></param>
+    /// <param name="jusulType"></param>
     public void playerJusulMerge(int jusulRank, int jusulType)
     {
         if(_jusulList[jusulRank][jusulType] >= 3)

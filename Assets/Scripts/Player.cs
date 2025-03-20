@@ -55,6 +55,7 @@ public class Player : MonoBehaviour
     public void AddCoin(int amount)
     {
         coin += amount;
+        gameObject.SendMessage("JusulUpgradeBot", SendMessageOptions.DontRequireReceiver);
     }
 
     public void AddSoul(int amount)

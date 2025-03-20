@@ -6,9 +6,9 @@ using UnityEngine;
 
 public abstract class Monster : MonoBehaviour
 {
-    protected float moveSpeed = 10f;
-    protected int health = 100;
-    protected int damage = 10;
+    [SerializeField] protected float moveSpeed = 10f;
+    [SerializeField] protected int health = 100;
+    [SerializeField] protected int damage = 10;
     
     public MobSpwaner _mobSpwaner;
     public Player _player;

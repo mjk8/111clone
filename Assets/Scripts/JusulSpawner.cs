@@ -6,15 +6,15 @@ using UnityEngine;
 
 public class JusulSpawner : MonoBehaviour
 {
-    private JusulOwned _jusulOwned;
-    private Transform _mobs;
-    private List<float> _coolTime = new List<float>();
-    private Player _player;
+    [SerializeField] private JusulOwned _jusulOwned;
+    [SerializeField] private Transform _mobs;
+    [SerializeField] private List<float> _coolTime = new List<float>();
+    [SerializeField] private Player _player;
     void Start()
     {
         _jusulOwned = transform.parent.GetComponentInChildren<JusulOwned>();
         _player = transform.parent.GetComponentInChildren<Player>();
-        _mobs = transform.parent.Find("SpawnPoint");
+        _mobs = transform.parent.GetChild(0);
         for (int i = 0; i < 12; ++i)
         {
             _coolTime.Add(0);
@@ -29,13 +29,13 @@ public class JusulSpawner : MonoBehaviour
             {
                 if (_jusulOwned._jusulList[i][j] == 0)
                 {
-                    _coolTime[j * 2 + i] = 0;
+                    _coolTime[j * 6 + i] = 0;
                 }
                 else
                 {
-                    if(_coolTime[j * 2 + i] > 0)
+                    if(_coolTime[j * 6 + i] > 0)
                     {
-                        _coolTime[j * 2 + i] -= Time.deltaTime;
+                        _coolTime[j * 6 + i] -= Time.deltaTime;
                     }
                     else
                     {
@@ -121,11 +121,11 @@ public class JusulSpawner : MonoBehaviour
 
     #region JusulSkill
 
-    private int closeRange = 50;
+    private int closeRange = 30;
     //스킬들
     public void Earth0()
     {
-        for(int i = 0;i<_mobs.childCount; ++i)
+        for(int i = 0;i<Math.Min(_mobs.childCount,1); ++i)
         {
             float verticalDistance = Mathf.Abs((_player.GetComponent<RectTransform>().anchoredPosition.y) - (_mobs.GetChild(i).GetComponent<RectTransform>().anchoredPosition.y));
             if (verticalDistance < closeRange)
@@ -230,7 +230,8 @@ public class JusulSpawner : MonoBehaviour
     {
         for(int i = 0;i<Math.Min(_mobs.childCount,1); ++i)
         {
-            _mobs.GetChild(i).GetComponent<Monster>().Attacked(143*(_jusulOwned.jusulWaterDamageLevel>0?2:1), Define.JusulType.물);
+            float verticalDistance = Mathf.Abs((_player.GetComponent<RectTransform>().anchoredPosition.y) - (_mobs.GetChild(i).GetComponent<RectTransform>().anchoredPosition.y));
+            StartCoroutine(WaterAttack(verticalDistance/closeRange, 143*(_jusulOwned.jusulWaterDamageLevel>0?2:1), _mobs.GetChild(i)));
         }
     }
     
@@ -238,7 +239,9 @@ public class JusulSpawner : MonoBehaviour
     {
         for(int i = 0;i<Math.Min(_mobs.childCount,5); ++i)
         {
-            _mobs.GetChild(i).GetComponent<Monster>().Attacked(520*(_jusulOwned.jusulWaterDamageLevel>0?2:1), Define.JusulType.물);
+            float verticalDistance = Mathf.Abs((_player.GetComponent<RectTransform>().anchoredPosition.y) - (_mobs.GetChild(i).GetComponent<RectTransform>().anchoredPosition.y));
+            StartCoroutine(WaterAttack(verticalDistance/closeRange, 520*(_jusulOwned.jusulWaterDamageLevel>0?2:1), _mobs.GetChild(i)));
+            
         }
     }
     
@@ -247,7 +250,8 @@ public class JusulSpawner : MonoBehaviour
         for(int i = 0;i<Math.Min(_mobs.childCount,1); ++i)
         {
             _mobs.GetChild(i).GetComponent<Monster>().SlowDown(2);
-            _mobs.GetChild(i).GetComponent<Monster>().Attacked(2500*(_jusulOwned.jusulWaterDamageLevel>0?2:1), Define.JusulType.물);
+            float verticalDistance = Mathf.Abs((_player.GetComponent<RectTransform>().anchoredPosition.y) - (_mobs.GetChild(i).GetComponent<RectTransform>().anchoredPosition.y));
+            StartCoroutine(WaterAttack(verticalDistance/closeRange, 2500*(_jusulOwned.jusulWaterDamageLevel>0?2:1), _mobs.GetChild(i)));
         }
     }
     
@@ -257,7 +261,8 @@ public class JusulSpawner : MonoBehaviour
         for(int i = 0;i<Math.Min(_mobs.childCount,5); ++i)
         {
             _mobs.GetChild(i).GetComponent<Monster>().SlowDown(2);
-            _mobs.GetChild(i).GetComponent<Monster>().Attacked(2500*(_jusulOwned.jusulWaterDamageLevel>0?2:1), Define.JusulType.물);
+            float verticalDistance = Mathf.Abs((_player.GetComponent<RectTransform>().anchoredPosition.y) - (_mobs.GetChild(i).GetComponent<RectTransform>().anchoredPosition.y));
+            StartCoroutine(WaterAttack(verticalDistance/closeRange, 2500*(_jusulOwned.jusulWaterDamageLevel>0?2:1), _mobs.GetChild(i)));
         }
     }
     
@@ -265,7 +270,8 @@ public class JusulSpawner : MonoBehaviour
     {
         for(int i = 0;i<Math.Min(_mobs.childCount,1); ++i)
         {
-            _mobs.GetChild(i).GetComponent<Monster>().Attacked(75000*(_jusulOwned.jusulWaterDamageLevel>0?2:1), Define.JusulType.물);
+            float verticalDistance = Mathf.Abs((_player.GetComponent<RectTransform>().anchoredPosition.y) - (_mobs.GetChild(i).GetComponent<RectTransform>().anchoredPosition.y));
+            StartCoroutine(WaterAttack(verticalDistance/closeRange, 2500*(_jusulOwned.jusulWaterDamageLevel>0?2:1), _mobs.GetChild(i)));
         }
     }
     
@@ -276,6 +282,16 @@ public class JusulSpawner : MonoBehaviour
         {
             _mobs.GetChild(i).GetComponent<Monster>().Attacked(attack, Define.JusulType.물);
             attack= (int)(attack*0.95f);
+        }
+    }
+
+    IEnumerator WaterAttack(float time, int damage, Transform t)
+    {
+        Debug.Log(time);
+        yield return new WaitForSeconds(time/5);
+        if (t != null)
+        {
+            t.GetComponent<Monster>().Attacked(damage, Define.JusulType.물);
         }
     }
     

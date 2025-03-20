@@ -2341,9 +2341,6 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5695909928818289637, guid: ab3cefda7dbcfdb419478abf6901a767, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1980214044}
-    - targetCorrespondingSourceObject: {fileID: 5695909928818289637, guid: ab3cefda7dbcfdb419478abf6901a767, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1980214050}
   m_SourcePrefab: {fileID: 100100000, guid: ab3cefda7dbcfdb419478abf6901a767, type: 3}
 --- !u!224 &349319364 stripped
@@ -3005,9 +3002,6 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5695909928818289637, guid: ab3cefda7dbcfdb419478abf6901a767, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 971441627}
     - targetCorrespondingSourceObject: {fileID: 5695909928818289637, guid: ab3cefda7dbcfdb419478abf6901a767, type: 3}
       insertIndex: -1
       addedObject: {fileID: 971441633}
@@ -4713,25 +4707,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5695909928818289637, guid: ab3cefda7dbcfdb419478abf6901a767, type: 3}
   m_PrefabInstance: {fileID: 619751845}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &971441627
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 971441621}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a832c3d5693531c49a73b29caf4492fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _player: {fileID: 0}
-  _newJusulCost: 20
-  _summonLevel: 0
-  jusulEarthDamageLevel: 0
-  jusulWaterDamageLevel: 0
-  shinSuUpgradeLevel: 0
-  _jusulSummonCostText: {fileID: 0}
 --- !u!114 &971441633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8516,25 +8491,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5695909928818289637, guid: ab3cefda7dbcfdb419478abf6901a767, type: 3}
   m_PrefabInstance: {fileID: 2083452428}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1757216693
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1757216687}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a832c3d5693531c49a73b29caf4492fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _player: {fileID: 0}
-  _newJusulCost: 20
-  _summonLevel: 0
-  jusulEarthDamageLevel: 0
-  jusulWaterDamageLevel: 0
-  shinSuUpgradeLevel: 0
-  _jusulSummonCostText: {fileID: 0}
 --- !u!114 &1757216699
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9615,25 +9571,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5695909928818289637, guid: ab3cefda7dbcfdb419478abf6901a767, type: 3}
   m_PrefabInstance: {fileID: 349319363}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1980214044
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1980214038}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a832c3d5693531c49a73b29caf4492fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _player: {fileID: 0}
-  _newJusulCost: 20
-  _summonLevel: 0
-  jusulEarthDamageLevel: 0
-  jusulWaterDamageLevel: 0
-  shinSuUpgradeLevel: 0
-  _jusulSummonCostText: {fileID: 0}
 --- !u!114 &1980214050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10551,9 +10488,6 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5695909928818289637, guid: ab3cefda7dbcfdb419478abf6901a767, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1757216693}
     - targetCorrespondingSourceObject: {fileID: 5695909928818289637, guid: ab3cefda7dbcfdb419478abf6901a767, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1757216699}

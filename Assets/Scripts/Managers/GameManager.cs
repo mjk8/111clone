@@ -58,6 +58,7 @@ public class GameManager: MonoBehaviour
             //TODO:: GameOver UI
             Managers.Resource.Destroy(player.transform.parent.GetChild(0).gameObject);
             Managers.Resource.Destroy(player.gameObject);
+            Application.Quit();
         }
         else
         {
