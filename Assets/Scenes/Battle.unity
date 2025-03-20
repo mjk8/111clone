@@ -4802,6 +4802,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a105f5a44c1c5a4596c267f81abaf8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bossSpawned: 0
   _isPlayerDead: 00000000
 --- !u!114 &1069217874 stripped
 MonoBehaviour:

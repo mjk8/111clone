@@ -10,8 +10,6 @@ using UnityEngine;
 /// </summary>
 public class JusulManager
 {
-    //jusulList[랭크][타입] = 각 주술 정보
-    List<List<Jusul>> _jusulList = new List<List<Jusul>>();
     //주술 색깔
     List<Color> _jusulColor = new List<Color>();
     //주술 업그레이드 전 확률
@@ -24,10 +22,7 @@ public class JusulManager
     //플레이어들에게 주술 정보가 할당 되기 전, 주술 관련 정보가 init되어야함.
     public void Init()
     {
-        for (int i = 0; i < Util.GetNumberOfItemsInEnum<Define.JusulRank>(); i++)
-        {
-            _jusulList.Add(new List<Jusul>());
-        }
+        
         
         _jusulColor.Add(Color.white);
         _jusulColor.Add(Color.green);
