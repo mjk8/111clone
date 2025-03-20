@@ -24,7 +24,7 @@ public class Enhance : MonoBehaviour
             transform.GetChild(1).GetComponent<Button>().interactable = false;
             transform.GetChild(1).GetChild(0).GetComponent<TMP_Text>().text = "구매완료";
             transform.GetChild(1).GetChild(1).gameObject.SetActive(false);
-            Managers.Player._myPlayer.jusulOwned.jusulWaterDamageLevel++;
+            Managers.Player._myPlayer.jusulOwned.jusulWaterDamageLevel=2;
         }
     }
     
@@ -35,7 +35,7 @@ public class Enhance : MonoBehaviour
             transform.GetChild(2).GetComponent<Button>().interactable = false;
             transform.GetChild(2).GetChild(0).GetComponent<TMP_Text>().text = "구매완료";
             transform.GetChild(2).GetChild(1).gameObject.SetActive(false);
-            Managers.Player._myPlayer.jusulOwned.jusulEarthDamageLevel++;
+            Managers.Player._myPlayer.jusulOwned.jusulEarthDamageLevel = 2;
         }
     }
     
@@ -46,7 +46,7 @@ public class Enhance : MonoBehaviour
             transform.GetChild(3).GetComponent<Button>().interactable = false;
             transform.GetChild(3).GetChild(0).GetComponent<TMP_Text>().text = "구매완료";
             transform.GetChild(3).GetChild(1).gameObject.SetActive(false);
-            Managers.Player._myPlayer.jusulOwned.shinSuUpgradeLevel++;
+            Managers.Player._myPlayer.jusulOwned.shinSuUpgradeLevel =2;
         }
     }
 }

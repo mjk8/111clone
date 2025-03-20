@@ -110,7 +110,7 @@ public class JusulManager
 
     public void JusulProbabilityUpgrade()
     {
-        Managers.Player._myPlayer.jusulOwned._summonLevel++;
+        Managers.Player._myPlayer.jusulOwned._summonLevel = 2;
     }
 
     //확률 등의, 헬퍼 함수

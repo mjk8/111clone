@@ -7,6 +7,9 @@ public class BotLogic : MonoBehaviour
 {
     public JusulOwned _jusulOwned;
     public Player _player;
+
+    private bool shinsu1 = false;
+    private bool shinsu2 = false;
     private void Start()
     {
         _jusulOwned = GetComponent<JusulOwned>();
@@ -24,6 +27,15 @@ public class BotLogic : MonoBehaviour
         {
             _jusulOwned.playerJusulAdd();
         }
+
+        if (!shinsu1)
+        {
+            shinsu1 = _player.jusulOwned.Shinsu1()>2?true:false;
+        }
+        if (!shinsu2)
+        {
+            shinsu2 = _player.jusulOwned.Shinsu2()>2?true:false;
+        }
         for(int i = 0;i<_jusulOwned._jusulList.Count;i++)
         {
             for(int j = 0;j<_jusulOwned._jusulList[i].Count;j++)
@@ -31,6 +43,14 @@ public class BotLogic : MonoBehaviour
                 while (_jusulOwned._jusulList[i][j] > 2)
                 {
                     _jusulOwned.playerJusulMerge(i,j);
+                    if (!shinsu1)
+                    {
+                        shinsu1 = _player.jusulOwned.Shinsu1()>2?true:false;
+                    }
+                    if (!shinsu2)
+                    {
+                        shinsu2 = _player.jusulOwned.Shinsu2()>2?true:false;
+                    }
                 }
             }
         }

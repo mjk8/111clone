@@ -3021,6 +3021,7 @@ GameObject:
   m_Component:
   - component: {fileID: 654210068}
   - component: {fileID: 654210069}
+  - component: {fileID: 654210070}
   m_Layer: 5
   m_Name: Shinsu2
   m_TagString: Untagged
@@ -3093,7 +3094,32 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 0}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 654210070}
+        m_TargetAssemblyTypeName: Shinsu, Assembly-CSharp
+        m_MethodName: Shinsu2Button
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &654210070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 654210067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c747cac69c164ce43b618cc9e185dedd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textReq: {fileID: 1069217874}
 --- !u!1 &684783048
 GameObject:
   m_ObjectHideFlags: 0
@@ -4720,6 +4746,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _jusulOwned: {fileID: 0}
+  _player: {fileID: 0}
 --- !u!1 &1014018715
 GameObject:
   m_ObjectHideFlags: 0
@@ -4765,6 +4792,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isPlayerDead: 00000000
+--- !u!114 &1069217874 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2185642236011656156, guid: afcb55ac6cc4b664d9560a1d05eaf20b, type: 3}
+  m_PrefabInstance: {fileID: 870443787}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1100515378
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5719,6 +5757,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1285713437}
   - component: {fileID: 1285713438}
+  - component: {fileID: 1285713439}
   m_Layer: 5
   m_Name: Shinsu1
   m_TagString: Untagged
@@ -5791,7 +5830,32 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 0}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1285713439}
+        m_TargetAssemblyTypeName: Shinsu, Assembly-CSharp
+        m_MethodName: Shinsu1Button
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1285713439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1285713436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c747cac69c164ce43b618cc9e185dedd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textReq: {fileID: 2185642236378165234}
 --- !u!1 &1288645745
 GameObject:
   m_ObjectHideFlags: 0
@@ -8504,6 +8568,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _jusulOwned: {fileID: 0}
+  _player: {fileID: 0}
 --- !u!1 &1765135341
 GameObject:
   m_ObjectHideFlags: 0
@@ -9107,7 +9172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c747cac69c164ce43b618cc9e185dedd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 0}
+  textReq: {fileID: 0}
 --- !u!1 &1924666605
 GameObject:
   m_ObjectHideFlags: 0
@@ -9584,6 +9649,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _jusulOwned: {fileID: 0}
+  _player: {fileID: 0}
 --- !u!1 &1998688290
 GameObject:
   m_ObjectHideFlags: 0
@@ -11112,6 +11178,17 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2185642236378165234 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2185642236011656156, guid: afcb55ac6cc4b664d9560a1d05eaf20b, type: 3}
+  m_PrefabInstance: {fileID: 721001518}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2185642237357644012
 MonoBehaviour:
   m_ObjectHideFlags: 0

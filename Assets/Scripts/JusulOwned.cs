@@ -15,13 +15,17 @@ public class JusulOwned : MonoBehaviour
     public List<List<int>> _jusulList = new List<List<int>>();
 
     //주술 강화 레벨
-    public int _summonLevel = 0;
-    public int jusulEarthDamageLevel = 0;
-    public int jusulWaterDamageLevel = 0;
-    public int shinSuUpgradeLevel = 0;
+    public int _summonLevel;
+    public int jusulEarthDamageLevel;
+    public int jusulWaterDamageLevel;
+    public int shinSuUpgradeLevel;
 
     private void Awake()
     {
+        _summonLevel = 0;
+        jusulEarthDamageLevel = 1;
+        jusulWaterDamageLevel = 1;
+        shinSuUpgradeLevel = 1;
         //주술 보유 초기화
         for (int i = 0; i < Util.GetNumberOfItemsInEnum<Define.JusulRank>(); i++)
         {
@@ -84,5 +88,53 @@ public class JusulOwned : MonoBehaviour
     {
         ++_jusulList[newVal.Item1][newVal.Item2];
         Managers.UI.jusulUI.UpdateUI();
+    }
+    
+    public int Shinsu1()
+    {
+        int condition = 0;
+        if (_jusulList[1][1] > 0) condition++;
+        if (_jusulList[2][1] > 0) condition++;
+        if (_jusulList[3][0] > 0) condition++;
+        if (condition>2)
+        {
+            transform.parent.Find("Shinsu1").gameObject.SetActive(true);
+            StartCoroutine(Shinsu1Skill());
+        }
+
+        return condition;
+    }
+    
+    public int Shinsu2()
+    {
+        int condition = 0;
+        if (_jusulList[1][0] > 0) condition++;
+        if (_jusulList[2][0] > 0) condition++;
+        if (_jusulList[3][1] > 0) condition++;
+        if (condition>2)
+        {
+            transform.parent.Find("Shinsu2").gameObject.SetActive(true);
+            StartCoroutine(Shinsu2Skill());
+        }
+
+        return condition;
+    }
+    
+    IEnumerator Shinsu1Skill()
+    {
+        while (_player!=null)
+        {
+            _player.AddCoin(70*shinSuUpgradeLevel);
+            yield return new WaitForSeconds(50);
+        }
+    }
+
+    IEnumerator Shinsu2Skill()
+    {
+        while (_player!=null)
+        {
+            _player.HealByPercentage(15*shinSuUpgradeLevel);
+            yield return new WaitForSeconds(40);
+        }
     }
 }
