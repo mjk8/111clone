@@ -14,7 +14,7 @@ public class JusulOwned : MonoBehaviour
     private int _summonLevel = 0;
 
     //jusulList[랭크][타입] = 보유 주술 수
-    List<List<int>> _jusulList = new List<List<int>>();
+    public List<List<int>> _jusulList = new List<List<int>>();
     
 
     private void Awake()
@@ -60,5 +60,6 @@ public class JusulOwned : MonoBehaviour
     public void AddThisJusul(Tuple<int, int> newVal)
     {
         ++_jusulList[newVal.Item1][newVal.Item2];
+        Managers.UI.jusulUI.UpdateUI();
     }
 }

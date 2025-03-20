@@ -33,6 +33,11 @@ public class JusulManager
         _jusulColor.Add(Color.red);
     }
 
+    public void ActivateJusul()
+    {
+        
+    }
+
     public Color JusulDamageColor(Define.JusulType jusulType)
     {
         if (jusulType == Define.JusulType.땅)

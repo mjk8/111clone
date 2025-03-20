@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
-/// 각 주술의 정보가 담긴 리스트
+/// 각 주술의 정보
 /// </summary>
 public class Jusul : MonoBehaviour
 {

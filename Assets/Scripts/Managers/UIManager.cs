@@ -8,10 +8,12 @@ public class UIManager
     
     //UI 연결
     public StatusUIScript statusUI;
+    public JusulButtonUI jusulUI;
     
     public void Init()
     {
         statusUI = GameObject.Find("StatusPanel").GetComponent<StatusUIScript>();
+        jusulUI = GameObject.Find("JusulButtons").GetComponent<JusulButtonUI>();
     }
     
     /*

@@ -1,23 +1,29 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
     private int hp;
     private int maxHp = 1000;
-    private int coin;
-    private int soul;
+    [SerializeField] private int coin;
+    [SerializeField] private int soul;
 
     public int decreaseHealth;
     public HealthBar healthBar;
     public JusulOwned jusulOwned;
     
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         jusulOwned = GetComponent<JusulOwned>();
         hp = maxHp;
+    }
+
+    private void Start()
+    {
         healthBar = transform.parent.GetComponentInChildren<HealthBar>();
         healthBar.Init(maxHp);
     }
