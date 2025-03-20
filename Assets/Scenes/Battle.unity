@@ -2318,6 +2318,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BotPlayer3
       objectReference: {fileID: 0}
+    - target: {fileID: 7812943889487924679, guid: ab3cefda7dbcfdb419478abf6901a767, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8589243518505671295, guid: ab3cefda7dbcfdb419478abf6901a767, type: 3}
       propertyPath: m_text
       value: Bot3
@@ -2980,6 +2984,14 @@ PrefabInstance:
     - target: {fileID: 5695909928818289637, guid: ab3cefda7dbcfdb419478abf6901a767, type: 3}
       propertyPath: m_Name
       value: BotPlayer1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7812943889487924679, guid: ab3cefda7dbcfdb419478abf6901a767, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7961512893935285159, guid: ab3cefda7dbcfdb419478abf6901a767, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8589243518505671295, guid: ab3cefda7dbcfdb419478abf6901a767, type: 3}
       propertyPath: m_text
@@ -10403,6 +10415,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BotPlayer2
       objectReference: {fileID: 0}
+    - target: {fileID: 7812943889487924679, guid: ab3cefda7dbcfdb419478abf6901a767, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8589243518505671295, guid: ab3cefda7dbcfdb419478abf6901a767, type: 3}
       propertyPath: m_text
       value: Bot 2
@@ -11010,7 +11026,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4438548519905595652, guid: ab3cefda7dbcfdb419478abf6901a767, type: 3}
       propertyPath: soul
-      value: 10
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7812943889487924679, guid: ab3cefda7dbcfdb419478abf6901a767, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7961512893935285159, guid: ab3cefda7dbcfdb419478abf6901a767, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8717813728247702317, guid: ab3cefda7dbcfdb419478abf6901a767, type: 3}
       propertyPath: m_AnchorMax.y

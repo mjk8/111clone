@@ -23,6 +23,10 @@ public class JusulSpawner : MonoBehaviour
     
     void Update()
     {
+        if (_player == null)
+        {
+            Destroy(this);
+        }
         for (int i = 0; i < _jusulOwned._jusulList.Count; ++i)
         {
             for (int j = 0;j < _jusulOwned._jusulList[i].Count; ++j)
@@ -127,56 +131,85 @@ public class JusulSpawner : MonoBehaviour
     {
         for(int i = 0;i<Math.Min(_mobs.childCount,1); ++i)
         {
-            float verticalDistance = Mathf.Abs((_player.GetComponent<RectTransform>().anchoredPosition.y) - (_mobs.GetChild(i).GetComponent<RectTransform>().anchoredPosition.y));
-            if (verticalDistance < closeRange)
+            try
             {
-                _mobs.GetChild(i).GetComponent<Monster>().Attacked(
-                    320 * (_jusulOwned.jusulEarthDamageLevel),
-                    Define.JusulType.땅);
+                if (_mobs.GetChild(i) != null)
+                {
+                    float verticalDistance = Mathf.Abs((_player.GetComponent<RectTransform>().anchoredPosition.y) -
+                                                       (_mobs.GetChild(i).GetComponent<RectTransform>().anchoredPosition
+                                                           .y));
+                    if (verticalDistance < closeRange)
+                    {
+                        _mobs.GetChild(i).GetComponent<Monster>().Attacked(
+                            320 * (_jusulOwned.jusulEarthDamageLevel),
+                            Define.JusulType.땅);
+                    }
+                }
             }
+            catch (Exception e){}
         }
     }
     
     public void Earth1()
     {
-        for(int i = 0;i<_mobs.childCount; ++i)
+        for (int i = 0; i < _mobs.childCount; ++i)
         {
-            float verticalDistance = Mathf.Abs((_player.GetComponent<RectTransform>().anchoredPosition.y) - (_mobs.GetChild(i).GetComponent<RectTransform>().anchoredPosition.y));
-            if (verticalDistance < closeRange)
+            try
             {
-                _mobs.GetChild(i).GetComponent<Monster>().Attacked(
-                    1700 * (_jusulOwned.jusulEarthDamageLevel),
-                    Define.JusulType.땅);
+                if (_mobs.GetChild(i) != null)
+                {
+                    float verticalDistance = Mathf.Abs((_player.GetComponent<RectTransform>().anchoredPosition.y) -
+                                                       (_mobs.GetChild(i).GetComponent<RectTransform>().anchoredPosition
+                                                           .y));
+                    if (verticalDistance < closeRange)
+                    {
+                        _mobs.GetChild(i).GetComponent<Monster>().Attacked(
+                            1700 * (_jusulOwned.jusulEarthDamageLevel),
+                            Define.JusulType.땅);
+                    }
+                }
             }
+            catch (Exception e){}
         }
     }
     
     
     public void Earth2()
     {
-        //체력 보호막
-        _player.IncrementHealthShield();
-        for(int i = 0;i<Math.Min(_mobs.childCount,1); ++i)
+        try
         {
-            _mobs.GetChild(i).GetComponent<Monster>().Attacked(
-                8500 * (_jusulOwned.jusulEarthDamageLevel),
-                Define.JusulType.땅);
+            //체력 보호막
+            _player.IncrementHealthShield();
+            for (int i = 0; i < Math.Min(_mobs.childCount, 1); ++i)
+            {
+                _mobs.GetChild(i).GetComponent<Monster>().Attacked(
+                    8500 * (_jusulOwned.jusulEarthDamageLevel),
+                    Define.JusulType.땅);
+            }
         }
+        catch (Exception e){}
     }
 
     public void Earth3()
     {
+        
         bool flag = false;
         for(int i = 0;i<_mobs.childCount; ++i)
         {
-            float verticalDistance = Mathf.Abs((_player.GetComponent<RectTransform>().anchoredPosition.y) - (_mobs.GetChild(i).GetComponent<RectTransform>().anchoredPosition.y));
-            if (verticalDistance < closeRange)
+            try
             {
-                flag = true;
-                _mobs.GetChild(i).GetComponent<Monster>().Attacked(
-                    7150 * (_jusulOwned.jusulEarthDamageLevel),
-                    Define.JusulType.땅);
+                float verticalDistance = Mathf.Abs((_player.GetComponent<RectTransform>().anchoredPosition.y) -
+                                                   (_mobs.GetChild(i).GetComponent<RectTransform>().anchoredPosition
+                                                       .y));
+                if (verticalDistance < closeRange && _mobs.GetChild(i) != null)
+                {
+                    flag = true;
+                    _mobs.GetChild(i).GetComponent<Monster>().Attacked(
+                        7150 * (_jusulOwned.jusulEarthDamageLevel),
+                        Define.JusulType.땅);
+                }
             }
+            catch (Exception e){}
         }
 
         if (flag)
@@ -187,61 +220,90 @@ public class JusulSpawner : MonoBehaviour
     
     public void Earth4()
     {
-        int extra = _player.GetHealthShield();
-        if (_mobs.childCount <= 5 + extra)
+        int extra = _player.GetHealthShield()/10;
+        try
         {
-            for(int i = 0;i<_mobs.childCount; ++i)
+            if (_mobs.childCount <= 5 + extra)
             {
-                _mobs.GetChild(i).GetComponent<Monster>().Attacked(
-                    340000 * (_jusulOwned.jusulEarthDamageLevel),
-                    Define.JusulType.땅);
+                for (int i = 0; i < _mobs.childCount; ++i)
+                {
+                    _mobs.GetChild(i).GetComponent<Monster>().Attacked(
+                        340000 * (_jusulOwned.jusulEarthDamageLevel),
+                        Define.JusulType.땅);
+                }
+            }
+            else
+            {
+                System.Random random = new System.Random(); //다양한 랜덤 값을 얻기 위해 같은 변수를 사용
+                for (int i = 0; i < 5 + extra; ++i)
+                {
+                    _mobs.GetChild(random.Next(0, _mobs.childCount)).GetComponent<Monster>().Attacked(
+                        8500 * (_jusulOwned.jusulEarthDamageLevel),
+                        Define.JusulType.땅);
+                }
             }
         }
-        else
-        {
-            System.Random random = new System.Random(); //다양한 랜덤 값을 얻기 위해 같은 변수를 사용
-            for(int i = 0;i<5+extra; ++i)
-            {
-                _mobs.GetChild(random.Next(0, _mobs.childCount)).GetComponent<Monster>().Attacked(
-                    8500 * (_jusulOwned.jusulEarthDamageLevel),
-                    Define.JusulType.땅);
-            }
-        }
+        catch (Exception e){}
     }
     
     public void Earth5()
     {
-        for(int i = 0;i<_mobs.childCount; ++i)
+        for (int i = 0; i < _mobs.childCount; ++i)
         {
-            if (i == 0)
+            try
             {
-                _mobs.GetChild(0).GetComponent<Monster>().Attacked(
-                    320000 * (_jusulOwned.jusulEarthDamageLevel),
+                if (i == 0)
+                {
+                    _mobs.GetChild(0).GetComponent<Monster>().Attacked(
+                        320000 * (_jusulOwned.jusulEarthDamageLevel),
+                        Define.JusulType.땅);
+                    continue;
+                }
+
+                _mobs.GetChild(i).GetComponent<Monster>().Attacked(
+                    32000 * (_jusulOwned.jusulEarthDamageLevel),
                     Define.JusulType.땅);
-                continue;
             }
-            _mobs.GetChild(i).GetComponent<Monster>().Attacked(
-                32000 * (_jusulOwned.jusulEarthDamageLevel),
-                Define.JusulType.땅);
+            catch (Exception e){}
         }
     }
     
     public void Water0()
     {
-        for(int i = 0;i<Math.Min(_mobs.childCount,1); ++i)
+        try
         {
-            float verticalDistance = Mathf.Abs((_player.GetComponent<RectTransform>().anchoredPosition.y) - (_mobs.GetChild(i).GetComponent<RectTransform>().anchoredPosition.y));
-            StartCoroutine(WaterAttack(verticalDistance/closeRange, 143*(_jusulOwned.jusulWaterDamageLevel), _mobs.GetChild(i)));
+            for (int i = 0; i < Math.Min(_mobs.childCount, 1); ++i)
+            {
+                RectTransform r = _mobs.GetChild(i).GetComponent<RectTransform>();
+                if (_mobs.GetChild(i) != null)
+                {
+                    float verticalDistance = Mathf.Abs((_player.GetComponent<RectTransform>().anchoredPosition.y) -
+                                                       (_mobs.GetChild(i).GetComponent<RectTransform>().anchoredPosition
+                                                           .y));
+                    StartCoroutine(WaterAttack(verticalDistance / closeRange, 143 * (_jusulOwned.jusulWaterDamageLevel),
+                        _mobs.GetChild(i)));
+                }
+            }
         }
+        catch (Exception e) { }
     }
     
     public void Water1()
     {
-        for(int i = 0;i<Math.Min(_mobs.childCount,5); ++i)
+        for (int i = 0; i < Math.Min(_mobs.childCount, 5); ++i)
         {
-            float verticalDistance = Mathf.Abs((_player.GetComponent<RectTransform>().anchoredPosition.y) - (_mobs.GetChild(i).GetComponent<RectTransform>().anchoredPosition.y));
-            StartCoroutine(WaterAttack(verticalDistance/closeRange, 520*(_jusulOwned.jusulWaterDamageLevel), _mobs.GetChild(i)));
-            
+            try
+            {
+                if (_mobs.GetChild(i) != null)
+                {
+                    float verticalDistance = Mathf.Abs((_player.GetComponent<RectTransform>().anchoredPosition.y) -
+                                                       (_mobs.GetChild(i).GetComponent<RectTransform>().anchoredPosition
+                                                           .y));
+                    StartCoroutine(WaterAttack(verticalDistance / closeRange, 520 * (_jusulOwned.jusulWaterDamageLevel),
+                        _mobs.GetChild(i)));
+                }
+            }
+            catch (Exception e) { }
         }
     }
     
@@ -249,9 +311,12 @@ public class JusulSpawner : MonoBehaviour
     {
         for(int i = 0;i<Math.Min(_mobs.childCount,1); ++i)
         {
-            _mobs.GetChild(i).GetComponent<Monster>().SlowDown(2);
-            float verticalDistance = Mathf.Abs((_player.GetComponent<RectTransform>().anchoredPosition.y) - (_mobs.GetChild(i).GetComponent<RectTransform>().anchoredPosition.y));
-            StartCoroutine(WaterAttack(verticalDistance/closeRange, 2500*(_jusulOwned.jusulWaterDamageLevel), _mobs.GetChild(i)));
+            if(_mobs.GetChild(i)!=null)
+            {
+                _mobs.GetChild(i).GetComponent<Monster>().SlowDown(2);
+                float verticalDistance = Mathf.Abs((_player.GetComponent<RectTransform>().anchoredPosition.y) - (_mobs.GetChild(i).GetComponent<RectTransform>().anchoredPosition.y));
+                StartCoroutine(WaterAttack(verticalDistance/closeRange, 2500*(_jusulOwned.jusulWaterDamageLevel), _mobs.GetChild(i)));
+            }
         }
     }
     
@@ -260,19 +325,36 @@ public class JusulSpawner : MonoBehaviour
     {
         for(int i = 0;i<Math.Min(_mobs.childCount,5); ++i)
         {
-            _mobs.GetChild(i).GetComponent<Monster>().SlowDown(2);
-            float verticalDistance = Mathf.Abs((_player.GetComponent<RectTransform>().anchoredPosition.y) - (_mobs.GetChild(i).GetComponent<RectTransform>().anchoredPosition.y));
-            StartCoroutine(WaterAttack(verticalDistance/closeRange, 2500*(_jusulOwned.jusulWaterDamageLevel), _mobs.GetChild(i)));
+            try
+            {
+                if(_mobs.GetChild(i)!=null)
+                {
+                    _mobs.GetChild(i).GetComponent<Monster>().SlowDown(2);
+                    float verticalDistance = Mathf.Abs((_player.GetComponent<RectTransform>().anchoredPosition.y) - (_mobs.GetChild(i).GetComponent<RectTransform>().anchoredPosition.y));
+                    StartCoroutine(WaterAttack(verticalDistance/closeRange, 2500*(_jusulOwned.jusulWaterDamageLevel), _mobs.GetChild(i)));
+                }
+            }
+            catch (Exception e) { }
         }
     }
     
     public void Water4()
     {
-        for(int i = 0;i<Math.Min(_mobs.childCount,1); ++i)
+        try
         {
-            float verticalDistance = Mathf.Abs((_player.GetComponent<RectTransform>().anchoredPosition.y) - (_mobs.GetChild(i).GetComponent<RectTransform>().anchoredPosition.y));
-            StartCoroutine(WaterAttack(verticalDistance/closeRange, 2500*(_jusulOwned.jusulWaterDamageLevel), _mobs.GetChild(i)));
+            for (int i = 0; i < Math.Min(_mobs.childCount, 1); ++i)
+            {
+                if (_mobs.GetChild(i) != null)
+                {
+                    float verticalDistance = Mathf.Abs((_player.GetComponent<RectTransform>().anchoredPosition.y) -
+                                                       (_mobs.GetChild(i).GetComponent<RectTransform>().anchoredPosition
+                                                           .y));
+                    StartCoroutine(WaterAttack(verticalDistance / closeRange,
+                        2500 * (_jusulOwned.jusulWaterDamageLevel), _mobs.GetChild(i)));
+                }
+            }
         }
+        catch (Exception e) { }
     }
     
     public void Water5()
@@ -280,8 +362,17 @@ public class JusulSpawner : MonoBehaviour
         int attack = 96000*(_jusulOwned.jusulWaterDamageLevel);
         for(int i = 0;i<_mobs.childCount; ++i)
         {
-            _mobs.GetChild(i).GetComponent<Monster>().Attacked(attack, Define.JusulType.물);
-            attack= (int)(attack*0.95f);
+            try
+            {
+                if (_mobs.GetChild(i) == null)
+                {
+                    continue;
+                }
+
+                _mobs.GetChild(i).GetComponent<Monster>().Attacked(attack, Define.JusulType.물);
+                attack = (int)(attack * 0.95f);
+            }
+            catch (Exception e) { }
         }
     }
 
