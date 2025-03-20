@@ -48,6 +48,7 @@ public class GameManager: MonoBehaviour
     public List<bool> _isPlayerDead = new List<bool>(){ false, false, false, false };
     public void GameOver(Player player)
     {
+        Debug.Log("Player " + player.name + " is dead");
         foreach (var p in Managers.Player._players)
         {
             _isPlayerDead[Managers.Player._players.IndexOf(p)] = true;
@@ -82,6 +83,7 @@ public class GameManager: MonoBehaviour
     }
     void StartWave()
     {
+        Debug.Log("Wave " + _currentWave + " Start");
         //TODO:: 신규 웨이브 Alert
         
         //게임 클리어
