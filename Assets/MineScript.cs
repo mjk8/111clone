@@ -25,7 +25,7 @@ public class MineScript : MonoBehaviour
     {
         if (Managers.Player.DecreaseMyPlayerSoul(cost[2]))
         {
-            Managers.Player._myPlayer.jusulOwned.AddThisJusul(Managers.Jusul.MineRankJusul((int)Define.JusulRank.천벌));
+            Managers.Player._myPlayer.jusulOwned.AddThisJusul(Managers.Jusul.MineRankJusul((int)Define.JusulRank.선조));
         }
     }
 }
