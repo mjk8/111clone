@@ -16,6 +16,8 @@ public class JusulManager
     List<Color> _jusulColor = new List<Color>();
     //주술 업그레이드 전 확률
     List<float> _jusulInitialUpgradeChance = new List<float>{ 0.8498f,0.1132f,0.03f,0.005f,0.002f,0f};
+    //주술 업그레이드 후 확률
+    List<float> _jusulUpgradedChance = new List<float>{0.366f,0.2f,0.2f,0.14f,0.062f,0.032f};
     
     //플레이어들에게 주술 정보가 할당 되기 전, 주술 관련 정보가 init되어야함.
     public void Awake()
@@ -55,8 +57,12 @@ public class JusulManager
     /// </summary>
     /// <param name="jusulRank">업그레이드 하는 주술 랭크</param>
     /// <returns></returns>
-    public Tuple<int,int> GetRandomJusul(int jusulUpgradeChance)
+    public Tuple<int,int> GetRandomJusul(int jusulUpgradeChance, int jusulProbability = 0)
     {
+        if (jusulProbability > 0)
+        {
+            return new Tuple<int, int>(GetRandomJusulRank(_jusulUpgradedChance),GetRandomJusulType());
+        }
         //소환확률 강화에 따른 확률 변동 추가
         return new Tuple<int, int>(GetRandomJusulRank(_jusulInitialUpgradeChance),GetRandomJusulType());
     }
@@ -85,7 +91,12 @@ public class JusulManager
         }
         return new Tuple<int, int>(jusulRank+1,GetRandomJusulType());
     }
-    
+
+    public void JusulProbabilityUpgrade()
+    {
+        Managers.Player._myPlayer.jusulOwned._summonLevel++;
+    }
+
     //확률 등의, 헬퍼 함수
     #region JusulHelperFunctions
     
