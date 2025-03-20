@@ -48,7 +48,7 @@ public class Player : MonoBehaviour
             //TODO:: NOT ENOUGH SOUL ALERT
             return false;
         }
-
+        soul -= amount;
         return true;
     }
 
@@ -76,6 +76,7 @@ public class Player : MonoBehaviour
         {
             Debug.Log("Player dead");
             Managers.Game.GameOver(this);
+            Destroy(transform.parent.gameObject);
         }
     }
 

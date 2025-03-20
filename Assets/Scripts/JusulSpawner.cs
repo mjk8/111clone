@@ -129,10 +129,11 @@ public class JusulSpawner : MonoBehaviour
     //스킬들
     public void Earth0()
     {
-        for(int i = 0;i<Math.Min(_mobs.childCount,1); ++i)
+        try
         {
-            try
+            for(int i = 0;i<Math.Min(_mobs.childCount,1); ++i)
             {
+            
                 if (_mobs.GetChild(i) != null)
                 {
                     float verticalDistance = Mathf.Abs((_player.GetComponent<RectTransform>().anchoredPosition.y) -
@@ -146,31 +147,33 @@ public class JusulSpawner : MonoBehaviour
                     }
                 }
             }
-            catch (Exception e){}
         }
+        catch (Exception e){}
     }
     
     public void Earth1()
     {
-        for (int i = 0; i < _mobs.childCount; ++i)
+        try
         {
-            try
+            for (int i = 0; i < _mobs.childCount; ++i)
             {
-                if (_mobs.GetChild(i) != null)
-                {
-                    float verticalDistance = Mathf.Abs((_player.GetComponent<RectTransform>().anchoredPosition.y) -
-                                                       (_mobs.GetChild(i).GetComponent<RectTransform>().anchoredPosition
-                                                           .y));
-                    if (verticalDistance < closeRange)
+                
+                    if (_mobs.GetChild(i) != null)
                     {
-                        _mobs.GetChild(i).GetComponent<Monster>().Attacked(
-                            1700 * (_jusulOwned.jusulEarthDamageLevel),
-                            Define.JusulType.땅);
+                        float verticalDistance = Mathf.Abs((_player.GetComponent<RectTransform>().anchoredPosition.y) -
+                                                           (_mobs.GetChild(i).GetComponent<RectTransform>().anchoredPosition
+                                                               .y));
+                        if (verticalDistance < closeRange)
+                        {
+                            _mobs.GetChild(i).GetComponent<Monster>().Attacked(
+                                1700 * (_jusulOwned.jusulEarthDamageLevel),
+                                Define.JusulType.땅);
+                        }
                     }
-                }
+                
             }
-            catch (Exception e){}
         }
+        catch (Exception e){}
     }
     
     
@@ -311,11 +314,20 @@ public class JusulSpawner : MonoBehaviour
     {
         for(int i = 0;i<Math.Min(_mobs.childCount,1); ++i)
         {
-            if(_mobs.GetChild(i)!=null)
+            try
             {
-                _mobs.GetChild(i).GetComponent<Monster>().SlowDown(2);
-                float verticalDistance = Mathf.Abs((_player.GetComponent<RectTransform>().anchoredPosition.y) - (_mobs.GetChild(i).GetComponent<RectTransform>().anchoredPosition.y));
-                StartCoroutine(WaterAttack(verticalDistance/closeRange, 2500*(_jusulOwned.jusulWaterDamageLevel), _mobs.GetChild(i)));
+                if (_mobs.GetChild(i) != null)
+                {
+                    _mobs.GetChild(i).GetComponent<Monster>().SlowDown(2);
+                    float verticalDistance = Mathf.Abs((_player.GetComponent<RectTransform>().anchoredPosition.y) -
+                                                       (_mobs.GetChild(i).GetComponent<RectTransform>().anchoredPosition
+                                                           .y));
+                    StartCoroutine(WaterAttack(verticalDistance / closeRange,
+                        2500 * (_jusulOwned.jusulWaterDamageLevel), _mobs.GetChild(i)));
+                }
+            }
+            catch (Exception e)
+            {
             }
         }
     }

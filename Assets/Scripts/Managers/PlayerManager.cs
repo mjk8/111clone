@@ -20,7 +20,9 @@ public class PlayerManager
     {
         foreach (var player in _players)
         {
-            player.AddCoin(coins);
+            if(player!=null){
+                player.AddCoin(coins);
+            }
         }
         Managers.UI.statusUI.UpdateCoinNum(_myPlayer.GetCoin());
     }
@@ -38,7 +40,10 @@ public class PlayerManager
     {
         foreach (var player in _players)
         {
-            player.AddSoul(souls);
+            if (player != null)
+            {
+                player.AddSoul(souls);
+            }
         }
         Managers.UI.statusUI.UpdateSoulNum(_myPlayer.GetSoul());
     }
