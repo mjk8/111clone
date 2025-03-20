@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
 {
     private int hp;
     private int maxHp = 1000;
-    [SerializeField] private int coin;
+    [SerializeField] private int coin = 100;
     [SerializeField] private int soul;
 
     private int healthShield = 0;

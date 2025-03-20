@@ -755,8 +755,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 281396468c89c2448bfaaa978bcc5257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coin: 1000
-  soul: 100
+  coin: 100
+  soul: 0
   decreaseHealth: 0
   healthBar: {fileID: 0}
   jusulOwned: {fileID: 0}
