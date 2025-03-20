@@ -20,7 +20,7 @@ public class Shinsu : MonoBehaviour
     
     public void Shinsu1Button()
     {
-        int req = _player.jusulOwned.Shinsu2();
+        int req = _player.jusulOwned.Shinsu1();
         if(req>2)
         {
             button.interactable = false;
